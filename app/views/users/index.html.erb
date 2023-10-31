@@ -17,6 +17,8 @@
     <%= submit_tag 'サインイン' %>
 <% end %>
 
+<%= button_to "ログイン画面", top_main_path, method: :get %>
+
 <br>
 <!--notice出力用-->
 <% if flash[:notice] %>
