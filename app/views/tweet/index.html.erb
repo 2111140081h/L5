@@ -1,17 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<h1>ツイート</h1>
 
-<h1>Twitter</h1>
+<div id="tweets">
+    <% @tweets.each do |tweet| %>
+        <%= render partial: "tweet", locals: { tweet: tweet } %>
+    <% end %>
+</div>
 
-<body>
-    <div id="container">
-        <div id="header2">
-            <%= render "header2" %>
-        </div>
-        <div id="sidebar">
-            <%= render "sidebar" %>
-        </div>
-        <div id="content">
-            <%= render "content" %>
-        </div>
-    </div>
-</body>
+<h1>ツイート作成</h1>
+<%= form_tag '/tweet/create', method: :post, data: { turbo: false } do %>
+    <%= label_tag :message, 'メッセージ' %>
+    <%= text_field_tag :message %><br>
+    <%= submit_tag 'ツイート' %>
+<% end %>

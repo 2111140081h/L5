@@ -13,15 +13,19 @@ class TopController < ApplicationController
     end
     
     if @user
-      session[:login_uid] = params[:uid]
-      redirect_to top_main_path
+      session[:uid] = params[:uid]
+      redirect_to tweet_index_path
     else
-      redirect_to top_failed_path
+      redirect_to tweet_index_path
     end
   end
 
   def logout
-    session[:login_uid] = nil
+    session[:uid] = nil
     redirect_to root_path
+  end
+  
+  def failed
+    render "failed"
   end
 end

@@ -1,12 +1,10 @@
-<div id="<%= dom_id tweet %>">
-  <p>
+<p>
+    <strong>User ID:</strong>
+    <%= tweet.user_id %>
+</p>
+<p>
     <strong>Message:</strong>
     <%= tweet.message %>
-  </p>
-
-  <p>
-    <strong>Tdate:</strong>
-    <%= tweet.tdate %>
-  </p>
-
-</div>
+</p>
+<%= button_to "このメッセージを削除", tweet, method: :delete %>
+<br>
