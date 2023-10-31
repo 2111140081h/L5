@@ -1,0 +1,26 @@
+<h1>ユーザー一覧</h1>
+
+    <div id="users">
+        <% @users.each do |user| %>
+            <%= render user %>
+        <% end %>
+    </div>
+
+<h1>ユーザー登録</h1>
+<%= form_tag '/users/create', method: :post, data: { turbo: false } do %>
+    <%= label_tag :uid, 'ユーザーID' %>
+    <%= text_field_tag :uid %><br>
+    <%= label_tag :password_digest, 'パスワード' %>
+    <%= password_field_tag :password_digest %><br>
+    <%= label_tag :age, '年齢' %>
+    <%= text_field_tag :age %><br>
+    <%= submit_tag 'サインイン' %>
+<% end %>
+
+<br>
+<!--notice出力用-->
+<% if flash[:notice] %>
+  <div class="notice">
+    <strong><%= flash[:notice] %></strong>
+  </div>
+<% end %>
