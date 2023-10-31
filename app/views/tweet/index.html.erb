@@ -1,5 +1,8 @@
 <h1>ツイート</h1>
 
+<%= session[:login_uid] %>
+<%= "こんにちは" %>
+
 <div id="tweets">
     <% @tweets.each do |tweet| %>
         <%= render partial: "tweet", locals: { tweet: tweet } %>

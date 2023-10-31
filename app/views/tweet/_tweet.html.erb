@@ -7,4 +7,6 @@
     <%= tweet.message %>
 </p>
 <%= button_to "このメッセージを削除", tweet, method: :delete %>
+<%= button_to "いいね", likes_path(tweet_id: tweet.id), method: :post %>
+<%= button_to "いいね削除", likes_path(tweet), method: :delete %>
 <br>
