@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'top/main'
+  get 'top/login'
+  get 'top/logout'
   get 'users/index'
   get 'users/new'
   get 'users/create'
@@ -8,6 +11,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :users
+  resources :tweets
   post 'users/create'
   root 'users#index'
+  post 'top/login'
+  get 'top/logout'
+  # root 'tweets#index'
 end

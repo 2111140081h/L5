@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       @user.save
     end
     
-    redirect_to 
+    # redirect_to 
   end
 
   def destroy
