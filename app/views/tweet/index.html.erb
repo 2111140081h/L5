@@ -1,13 +1,14 @@
-<h1>ツイート</h1>
+<h1>ようこそ　<%= session[:login_uid] %>　さん</h1>
+<br>
 
-<%= session[:login_uid] %>
-<%= "こんにちは" %>
+<h1>ツイート</h1>
 
 <div id="tweets">
     <% @tweets.each do |tweet| %>
         <%= render partial: "tweet", locals: { tweet: tweet } %>
     <% end %>
 </div>
+<br>
 
 <h1>ツイート作成</h1>
 <%= form_tag '/tweet/create', method: :post, data: { turbo: false } do %>

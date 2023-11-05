@@ -16,12 +16,12 @@ class UsersController < ApplicationController
       redirect_to root_path, notice: "入力されたユーザー名は既に存在しています!"
     else
       #uidとpassword_digestのデータベースへの保存
-      bcrypted_pass = BCrypt::Password.create(params[:pass])
-      @user = User.new(uid: params[:uid], password_digest: bcrypted_pass, age: params[:age])
+      bcrypted_pass = BCrypt::Password.create(params[:password])
+      @user = User.new(uid: params[:uid], password: bcrypted_pass, age: params[:age])
       @user.save
+      
+      redirect_to 'top/login'
     end
-    
-    render 'top/login'
   end
 
   def destroy

@@ -1,18 +1,21 @@
+require 'bcrypt'
+
 class TopController < ApplicationController
   def main
     render "login"
   end
 
   def login
-    @user = User.find_by(uid: params[:uid])
-    if @user != nil
-      login_password = BCrypt::Password.new(@user.password_digest)
-      if login_password == params[:pass]
-        session[:login_uid] = @user.uid
-        redirect_to top_main_path
-      else
+    user = User.find_by(uid: params[:uid])
+    if user
+      if BCrypt::Password.new(user.password) == params[:pass]
+        session[:login_uid] = user.uid
         redirect_to tweet_index_path
+      else
+        redirect_to top_main_path
       end
+    else
+      redirect_to top_main_path
     end
   end
 
