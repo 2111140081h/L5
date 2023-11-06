@@ -10,17 +10,15 @@ class UsersController < ApplicationController
   end
 
   def create  #signin feature
-    existing_user = User.find_by(uid: params[:uid])
-    
-    if existing_user
-      redirect_to root_path, notice: "入力されたユーザー名は既に存在しています!"
+    @user = User.new(
+      uid: params[:uid],
+      password: params[:password],
+      password_confirmation: params[:password_confirmation],
+      age: params[:age])
+    if @user.save
+      redirect_to users_path
     else
-      #uidとpassword_digestのデータベースへの保存
-      bcrypted_pass = BCrypt::Password.create(params[:password])
-      @user = User.new(uid: params[:uid], password: bcrypted_pass, age: params[:age])
-      @user.save
-      
-      redirect_to 'top/login'
+      render 'index'
     end
   end
 

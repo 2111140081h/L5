@@ -8,7 +8,7 @@ class TopController < ApplicationController
   def login
     user = User.find_by(uid: params[:uid])
     if user
-      if BCrypt::Password.new(user.password) == params[:pass]
+      if BCrypt::Password.new(user.pass) == params[:pass]
         session[:login_uid] = user.uid
         redirect_to tweet_index_path
       else

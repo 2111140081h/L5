@@ -30,5 +30,4 @@ Rails.application.routes.draw do
   post 'top/logout'
   get 'top/logout'
   post 'tweet/create'
-  # root 'tweets#index'
 end

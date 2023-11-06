@@ -9,7 +9,8 @@ class TweetController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(message: params[:message], user_id: session[:login_uid])
+    @tweet = Tweet.new(message: params[:message], user_name: session[:login_uid])
+    @tweet.user_id = current_user.id
     @tweet.save
     redirect_to tweet_index_path
   end
