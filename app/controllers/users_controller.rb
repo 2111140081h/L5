@@ -3,13 +3,14 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
-    render "index"
+    # render "index"
   end
 
   def new
   end
 
   def create  #signin feature
+  
     @user = User.new(
       uid: params[:uid],
       password: params[:password],
